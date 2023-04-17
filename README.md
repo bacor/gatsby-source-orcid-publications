@@ -1,10 +1,16 @@
 # `gatsby-source-orcid-publications`
 
-Gatsby source plugin that fetches publications from ORCID and formats them using [Citation.js](citation.js.org/). You can pass multiple ORCID ids. The plugin will retrieve all publications (works) associated with these ids, and create nodes for all unique publications, while also associating each publication to the ORCID ids.
+[Gatsby](https://gatsbyjs.com/) source plugin to pull publications from [ORCID](https://orcid.org/) and format them using [Citation.js](https://citation.js.org/).
+
+- Pulls publications from multiple ORCID ids
+- Formatted bibliography using custom citation styles
+- Query publications in GraphQL
+
+---
 
 ## Basic usage
 
-The only required option is a list of ORCID ids, but you can find [a list of all options below](#configuration). In particular, you can customize the citation style by passing a CSL template.
+The only required option is a list of ORCID ids, but you can find [a list of all options below](#plugin-options).
 
 ```js
 // In your gatsby-config.js
@@ -32,7 +38,6 @@ query MyQuery {
       html # formatted html reference
       text # plain text reference
       orcid_ids # list of associated ORCID ids (see below)
-
       # The Cite object is exported to bibjson, and all its fields
       # are added to the graph under props:
       props {
@@ -99,7 +104,7 @@ If multiple ORCID ids are passed, the same publication could appear multiple tim
 
 The plugin tracks from which ORCID id a publication was retrieved. If a publication is for example found in the works of both ORCID id `0000-0000-0000-0001` and ORCID id `0000-0000-0000-0002`, then only one node will be created, and it will have `Publication.orcid_ids = ['0000-0000-0000-0001', '0000-0000-0000-0002']`.
 
-### Linking publications to users
+### Linking publications
 
 One way you can use `orcid_ids`, is to associate publications to other nodes, such as users. The specifics will vary depending on the setup, but suppose you have a node type `Users` with an `orcid_id` field, then the following schema customization should do the trick:
 

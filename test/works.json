@@ -1,0 +1,316 @@
+[
+  {
+    "last-modified-date": { "value": 1655995396899 },
+    "external-ids": {
+      "external-id": [
+        {
+          "external-id-type": "doi",
+          "external-id-value": "10.5281/ZENODO.5624531",
+          "external-id-normalized": {
+            "value": "10.5281/zenodo.5624531",
+            "transient": true
+          },
+          "external-id-normalized-error": null,
+          "external-id-url": {
+            "value": "https://doi.org/10.5281/zenodo.5624531"
+          },
+          "external-id-relationship": "self"
+        }
+      ]
+    },
+    "work-summary": [
+      {
+        "put-code": 114870302,
+        "created-date": { "value": 1655995125154 },
+        "last-modified-date": { "value": 1655995396899 },
+        "source": {
+          "source-orcid": {
+            "uri": "https://orcid.org/0000-0002-0766-7305",
+            "path": "0000-0002-0766-7305",
+            "host": "orcid.org"
+          },
+          "source-client-id": null,
+          "source-name": { "value": "Bas Cornelissen" },
+          "assertion-origin-orcid": null,
+          "assertion-origin-client-id": null,
+          "assertion-origin-name": null
+        },
+        "title": {
+          "title": {
+            "value": "Cosine Contours: a Multipurpose Representation for Melodies"
+          },
+          "subtitle": null,
+          "translated-title": null
+        },
+        "external-ids": {
+          "external-id": [
+            {
+              "external-id-type": "doi",
+              "external-id-value": "10.5281/ZENODO.5624531",
+              "external-id-normalized": {
+                "value": "10.5281/zenodo.5624531",
+                "transient": true
+              },
+              "external-id-normalized-error": null,
+              "external-id-url": {
+                "value": "https://doi.org/10.5281/zenodo.5624531"
+              },
+              "external-id-relationship": "self"
+            }
+          ]
+        },
+        "url": { "value": "https://zenodo.org/record/5624531" },
+        "type": "conference-paper",
+        "publication-date": {
+          "year": { "value": "2021" },
+          "month": { "value": "11" },
+          "day": { "value": "07" }
+        },
+        "journal-title": {
+          "value": "International Society for Music Information Retrieval Conference"
+        },
+        "visibility": "public",
+        "path": "/0000-0002-0766-7305/work/114870302",
+        "display-index": "1"
+      }
+    ]
+  },
+  {
+    "last-modified-date": { "value": 1655995351250 },
+    "external-ids": {
+      "external-id": [
+        {
+          "external-id-type": "doi",
+          "external-id-value": "10.1145/3424911.3425514",
+          "external-id-normalized": {
+            "value": "10.1145/3424911.3425514",
+            "transient": true
+          },
+          "external-id-normalized-error": null,
+          "external-id-url": {
+            "value": "https://doi.org/10.1145/3424911.3425514"
+          },
+          "external-id-relationship": "self"
+        }
+      ]
+    },
+    "work-summary": [
+      {
+        "put-code": 114870175,
+        "created-date": { "value": 1655994830546 },
+        "last-modified-date": { "value": 1655995351250 },
+        "source": {
+          "source-orcid": {
+            "uri": "https://orcid.org/0000-0002-0766-7305",
+            "path": "0000-0002-0766-7305",
+            "host": "orcid.org"
+          },
+          "source-client-id": null,
+          "source-name": { "value": "Bas Cornelissen" },
+          "assertion-origin-orcid": null,
+          "assertion-origin-client-id": null,
+          "assertion-origin-name": null
+        },
+        "title": {
+          "title": {
+            "value": "Studying Large Plainchant Corpora Using chant21"
+          },
+          "subtitle": null,
+          "translated-title": null
+        },
+        "external-ids": {
+          "external-id": [
+            {
+              "external-id-type": "doi",
+              "external-id-value": "10.1145/3424911.3425514",
+              "external-id-normalized": {
+                "value": "10.1145/3424911.3425514",
+                "transient": true
+              },
+              "external-id-normalized-error": null,
+              "external-id-url": {
+                "value": "https://doi.org/10.1145/3424911.3425514"
+              },
+              "external-id-relationship": "self"
+            }
+          ]
+        },
+        "url": { "value": "http://dx.doi.org/10.1145/3424911.3425514" },
+        "type": "conference-paper",
+        "publication-date": {
+          "year": { "value": "2020" },
+          "month": { "value": "10" },
+          "day": { "value": "16" }
+        },
+        "journal-title": {
+          "value": "7th International Conference on Digital Libraries for Musicology"
+        },
+        "visibility": "public",
+        "path": "/0000-0002-0766-7305/work/114870175",
+        "display-index": "1"
+      }
+    ]
+  },
+  {
+    "last-modified-date": { "value": 1655995198209 },
+    "external-ids": {
+      "external-id": [
+        {
+          "external-id-type": "doi",
+          "external-id-value": "10.5281/ZENODO.4245572",
+          "external-id-normalized": {
+            "value": "10.5281/zenodo.4245572",
+            "transient": true
+          },
+          "external-id-normalized-error": null,
+          "external-id-url": {
+            "value": "https://doi.org/10.5281/ZENODO.4245572"
+          },
+          "external-id-relationship": "self"
+        }
+      ]
+    },
+    "work-summary": [
+      {
+        "put-code": 114870343,
+        "created-date": { "value": 1655995198209 },
+        "last-modified-date": { "value": 1655995198209 },
+        "source": {
+          "source-orcid": {
+            "uri": "https://orcid.org/0000-0002-0766-7305",
+            "path": "0000-0002-0766-7305",
+            "host": "orcid.org"
+          },
+          "source-client-id": null,
+          "source-name": { "value": "Bas Cornelissen" },
+          "assertion-origin-orcid": null,
+          "assertion-origin-client-id": null,
+          "assertion-origin-name": null
+        },
+        "title": {
+          "title": {
+            "value": "Mode classification and natural units in plainchant"
+          },
+          "subtitle": null,
+          "translated-title": null
+        },
+        "external-ids": {
+          "external-id": [
+            {
+              "external-id-type": "doi",
+              "external-id-value": "10.5281/ZENODO.4245572",
+              "external-id-normalized": {
+                "value": "10.5281/zenodo.4245572",
+                "transient": true
+              },
+              "external-id-normalized-error": null,
+              "external-id-url": {
+                "value": "https://doi.org/10.5281/ZENODO.4245572"
+              },
+              "external-id-relationship": "self"
+            }
+          ]
+        },
+        "url": { "value": "https://zenodo.org/record/4245572" },
+        "type": "conference-paper",
+        "publication-date": {
+          "year": { "value": "2020" },
+          "month": { "value": "10" },
+          "day": { "value": "11" }
+        },
+        "journal-title": {
+          "value": "International Conference on Music Information Retrieval (ISMIR 2020)"
+        },
+        "visibility": "public",
+        "path": "/0000-0002-0766-7305/work/114870343",
+        "display-index": "1"
+      }
+    ]
+  },
+  {
+    "last-modified-date": { "value": 1655995761047 },
+    "external-ids": { "external-id": [] },
+    "work-summary": [
+      {
+        "put-code": 114870772,
+        "created-date": { "value": 1655995761047 },
+        "last-modified-date": { "value": 1655995761047 },
+        "source": {
+          "source-orcid": {
+            "uri": "https://orcid.org/0000-0002-0766-7305",
+            "path": "0000-0002-0766-7305",
+            "host": "orcid.org"
+          },
+          "source-client-id": null,
+          "source-name": { "value": "Bas Cornelissen" },
+          "assertion-origin-orcid": null,
+          "assertion-origin-client-id": null,
+          "assertion-origin-name": null
+        },
+        "title": {
+          "title": {
+            "value": "Bayesian Language Games: Unifying and evaluating agent-based models of horizontal and vertical language evolution"
+          },
+          "subtitle": null,
+          "translated-title": null
+        },
+        "external-ids": { "external-id": [] },
+        "url": null,
+        "type": "dissertation-thesis",
+        "publication-date": {
+          "year": { "value": "2017" },
+          "month": { "value": "09" },
+          "day": { "value": "30" }
+        },
+        "journal-title": null,
+        "visibility": "public",
+        "path": "/0000-0002-0766-7305/work/114870772",
+        "display-index": "1"
+      }
+    ]
+  },
+  {
+    "last-modified-date": { "value": 1655996369182 },
+    "external-ids": { "external-id": [] },
+    "work-summary": [
+      {
+        "put-code": 114871229,
+        "created-date": { "value": 1655996369182 },
+        "last-modified-date": { "value": 1655996369182 },
+        "source": {
+          "source-orcid": {
+            "uri": "https://orcid.org/0000-0002-0766-7305",
+            "path": "0000-0002-0766-7305",
+            "host": "orcid.org"
+          },
+          "source-client-id": null,
+          "source-name": { "value": "Bas Cornelissen" },
+          "assertion-origin-orcid": null,
+          "assertion-origin-client-id": null,
+          "assertion-origin-name": null
+        },
+        "title": {
+          "title": {
+            "value": "Categorization in the Speech to Song Transformation (STS)"
+          },
+          "subtitle": null,
+          "translated-title": null
+        },
+        "external-ids": { "external-id": [] },
+        "url": null,
+        "type": "conference-poster",
+        "publication-date": {
+          "year": { "value": "2016" },
+          "month": null,
+          "day": null
+        },
+        "journal-title": {
+          "value": "International Conference on Music Perception and Cognition"
+        },
+        "visibility": "public",
+        "path": "/0000-0002-0766-7305/work/114871229",
+        "display-index": "1"
+      }
+    ]
+  }
+]

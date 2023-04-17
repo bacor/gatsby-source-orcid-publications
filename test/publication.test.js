@@ -41,3 +41,18 @@ test("custom csl style", async () => {
   const ref = `Cornelissen, Bas, Willem Zuidema, and John Ashley Burgoyne. 2020. “Mode Classification and Natural Units in Plainchant.” In Proceedings of the 21st International Conference on Music Information Retrieval (ISMIR 2020), 869–75. Montréal, Canada. https://doi.org/10.5281/zenodo.4245572.`;
   expect(text.startsWith(ref)).toBeTruthy();
 });
+
+test('fetch csl style', async () => {
+  const url = 'https://raw.githubusercontent.com/citation-style-language/styles/master/chicago-author-date.csl'
+  const response = await fetch(url);
+  if(response.ok) {
+    const csl_template = await response.text()
+    const pub = await Publication.load(BIBTEX, {
+      template: csl_template,
+      style: "chicago-author-year",
+    });
+    const text = pub.text;
+    const ref = `Cornelissen, Bas, Willem Zuidema, and John Ashley Burgoyne. 2020. “Mode Classification and Natural Units in Plainchant.” In Proceedings of the 21st International Conference on Music Information Retrieval (ISMIR 2020), 869–75. Montréal, Canada. https://doi.org/10.5281/zenodo.4245572.`;
+    expect(text.startsWith(ref)).toBeTruthy();
+  }
+})

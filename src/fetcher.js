@@ -48,11 +48,12 @@ export default class OrcidFetcher {
       this._uniqueSummaries = {};
       for (const collection of this.collections()) {
         for (const summary of collection.summaries()) {
+          // Check for duplicates
           if (!(summary.internalId in this._uniqueSummaries)) {
             this._uniqueSummaries[summary.internalId] = summary;
           } else {
             const storedSummary = this._uniqueSummaries[summary.internalId];
-            storedSummary.parentOrcidIds.push(collection.orcidIds);
+            storedSummary.parentOrcidIds.push(collection.orcidId);
           }
         }
       }

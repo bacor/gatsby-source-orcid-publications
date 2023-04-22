@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-source-orcid-publications",
-  "version": "0.1.0",
-  "description": "A Gatsby source plugin that fetches publications from ORCID.",
+  "name": "gatsby-source-publications",
+  "version": "0.2.0",
+  "description": "A Gatsby source plugin that pulls publications from DOIs, bibtex or ORCID.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bacor/gatsby-source-orcid-publications"
+    "url": "https://github.com/bacor/gatsby-source-publications"
   },
   "keywords": [
     "gatsby",
@@ -25,7 +25,7 @@
   "author": "Bas Cornelissen (https://github.com/bacor)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bacor/gatsby-source-orcid-publications/issues"
+    "url": "https://github.com/bacor/gatsby-source-publications/issues"
   },
   "dependencies": {
     "@citation-js/plugin-bibjson": "^0.6.5",

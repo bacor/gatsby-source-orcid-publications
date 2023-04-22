@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import OrcidService from "./service.js";
+import OrcidService from "./orcid-service.js";
 
 export const ORCID_WORK_PROPERTIES = [
   "internalId",
@@ -24,6 +24,20 @@ export const ORCID_WORK_PROPERTIES = [
   "language",
   "description",
   "bibjson",
+];
+
+export const ORCID_WORK_SUMMARY_PROPERTIES = [
+  "internalId",
+  "lastmodified",
+  "created",
+  "orcidId",
+  "putCode",
+  "path",
+  "doi",
+  "type",
+  "title",
+  "journal",
+  "year",
 ];
 
 function uid() {

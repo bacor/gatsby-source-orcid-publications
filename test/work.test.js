@@ -1,4 +1,4 @@
-import OrcidWork, { ORCID_WORK_PROPERTIES } from "../src/work.js";
+import OrcidWork, { ORCID_WORK_PROPERTIES } from "../src/orcid-work.js";
 
 const EXAMPLE_1 = {
   "created-date": { value: 1655995125154 },

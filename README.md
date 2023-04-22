@@ -25,6 +25,27 @@ plugins: [
   },
 ];
 ```
+```js
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: "gatsby-source-orcid-publications",
+    options: {
+      sources: [
+        { orcidId: "0000-0000-0000-0001" }, 
+        { 
+          orcidId: "0000-0000-0000-0002",
+          filter: summary => parseInt(summary.year) > 2000,
+          include: ['10.5281/zenodo.5624531']
+        }
+      ]
+      style: "apa",
+      // See below for all options
+    },
+  },
+];
+```
+
 
 You can then query your publications as follows.
 

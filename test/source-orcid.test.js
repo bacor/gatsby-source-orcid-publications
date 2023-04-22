@@ -1,7 +1,6 @@
-import OrcidWork from "../src/work.js";
-import OrcidWorkSummary, {
-  ORCID_WORK_SUMMARY_PROPERTIES,
-} from "../src/work-summary.js";
+import { OrcidSource, OrcidSourceItem } from "../src/source-orcid";
+import { ORCID_WORK_SUMMARY_PROPERTIES } from "../src/orcid-work.js";
+import Publication from "../src/publication";
 
 const EXAMPLE_1 = {
   "last-modified-date": { value: 1655995396899 },
@@ -81,10 +80,29 @@ const EXAMPLE_1 = {
   ],
 };
 
+test("orcid source", async () => {
+  const source = await OrcidSource.load("bas", "0000-0002-0766-7305", {
+    filter: (item) => item.year < 2020,
+  });
+  expect(source.length).toBe(2);
+});
+
+test("orcid source publications", async () => {
+  const source = await OrcidSource.load("bas", "0000-0002-0766-7305", {
+    filter: (item) => item.year < 2018,
+  });
+  const item = source.items[source.ids[0]];
+  const pub = await item.getPublication();
+  expect(pub.year).toBe(2017);
+});
+
 test("all properties of work summary example 1", () => {
-  const summary = new OrcidWorkSummary(EXAMPLE_1);
+  const summary = new OrcidSourceItem({
+    data: EXAMPLE_1,
+    orcidId: "0000-0002-0766-7305",
+  });
   expect(summary.data).toEqual(EXAMPLE_1);
-  expect(summary.internalId).toEqual("doi:10.5281/zenodo.5624531");
+  expect(summary.id).toEqual("doi:10.5281/zenodo.5624531");
   expect(summary.doi).toEqual("10.5281/zenodo.5624531");
   expect(summary.orcidId).toEqual("0000-0002-0766-7305");
   expect(summary.putCode).toEqual(114870302);
@@ -102,7 +120,7 @@ test("all properties of work summary example 1", () => {
 });
 
 test("initialize work summary with empty object", () => {
-  const summary = new OrcidWorkSummary({});
+  const summary = new OrcidSourceItem({});
   const exclude = ["internalId"];
   ORCID_WORK_SUMMARY_PROPERTIES.forEach((prop) => {
     if (!exclude.includes(prop)) {
@@ -111,14 +129,11 @@ test("initialize work summary with empty object", () => {
   });
 });
 
-test("specify internalId of work summary", () => {
-  const summary = new OrcidWorkSummary({}, { internalId: "hello world" });
-  expect(summary.internalId).toEqual("hello world");
-});
-
-test("fetch full work", async () => {
-  const summary = new OrcidWorkSummary(EXAMPLE_1);
-  const work = await summary.fetchFullWork();
-  expect(work).toBeInstanceOf(OrcidWork);
-  expect(work.internalId).toEqual(summary.internalId);
+test("fetch full publication", async () => {
+  const summary = new OrcidSourceItem({
+    data: EXAMPLE_1,
+    orcidId: "0000-0002-0766-7305",
+  });
+  const pub = await summary.fetchPublication();
+  expect(pub).toBeInstanceOf(Publication);
 });

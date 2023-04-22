@@ -3,8 +3,7 @@ import "@citation-js/plugin-doi";
 import "@citation-js/plugin-csl";
 import "@citation-js/plugin-bibtex";
 
-export const DEFAULT_STYLES = ["apa", "vancouver", "harvard1"];
-export const DEFAULT_LOCALES = ["en-US", "es-ES", "de-DE", "fr-FR", "nl-NL"];
+export const SUPPORTED_LOCALES = ["en-US", "es-ES", "de-DE", "fr-FR", "nl-NL"];
 
 export default class Publication {
   constructor(
@@ -20,13 +19,19 @@ export default class Publication {
     if (!(cite instanceof Cite)) {
       throw new TypeError("cite should be a Cite object.");
     }
-    if (!DEFAULT_LOCALES.includes(locale)) {
+    if (!SUPPORTED_LOCALES.includes(locale)) {
       throw new TypeError(`Locale '${locale}' is not supported.`);
     }
-    if (!DEFAULT_STYLES.includes(style)) {
+
+    if (template) {
       let config = plugins.config.get("@csl");
       config.templates.add(style, template);
     }
+
+    // We no longer check whether the style is available:
+    // const config = plugins.config.get("@csl");
+    // const styles = Object.keys(config.templates.data)
+
     this.style = style;
     this.locale = locale;
     this.processHTML = processHTML;

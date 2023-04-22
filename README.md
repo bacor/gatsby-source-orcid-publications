@@ -9,7 +9,28 @@
 
 ---
 
-## Basic usage
+## Minimal example
+
+```js
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: "gatsby-source-publications",
+    options: {
+      sources: [
+        {
+          type: "bibtex"
+          name: "my-publication",
+          path: path.resolve('./src/my-bibliography.bib')
+        }
+      ]
+    },
+  },
+];
+```
+
+
+## More elaborate example
 
 The only required option is a list of sources, but you can find [a list of all options below](#plugin-options).
 

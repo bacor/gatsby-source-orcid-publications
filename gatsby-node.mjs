@@ -146,7 +146,7 @@ export async function sourceNodes(
     refresh = false,
 
     // Optional: ORCID endpoint
-    endpoint = "https://pub.orcid.org/v3.0",
+    orcidEndpoint = "https://pub.orcid.org/v3.0",
 
     // Optional: delay in ms between requests to ORCID
     delayAfterFetch = 25,
@@ -161,7 +161,7 @@ export async function sourceNodes(
   style = await setupCitationStyle(style, template);
 
   // Set up an Orcid service
-  const service = new OrcidService(endpoint, delayAfterFetch);
+  const service = new OrcidService(orcidEndpoint, delayAfterFetch);
 
   // Instantiate all sources
   const sourceObjects = await Promise.all(

@@ -19,7 +19,7 @@ plugins: [
     options: {
       sources: [
         {
-          type: "bibtex"
+          type: "bibtex",
           name: "my-publication",
           path: path.resolve('./src/my-bibliography.bib')
         }

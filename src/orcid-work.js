@@ -132,6 +132,7 @@ export default class OrcidWork {
   }
 
   get title() {
+    // TODO add subtitle?
     return this.data.title?.title?.value;
   }
 

@@ -21,7 +21,15 @@ export class Source {
         item.sources.push(this.name);
       }
       if (filter(item)) {
-        this.items[item.id] = item;
+        // Note we're not checking for duplicates here.
+        // However ids are based on DOIs and the same DOI
+        // can appear multiple times (with different put codes)
+        // see https://github.com/bacor/mcg/issues/159#issuecomment-1765935885
+        
+        // if(this.items[item.id]) {
+          // duplicate id!
+        // } 
+          this.items[item.id] = item;
       }
     });
   }
@@ -72,7 +80,11 @@ export class SourceItem {
   async getPublication() {
     if (!this.publication) {
       const pub = await this.fetchPublication(this.opts);
-      if (!(pub instanceof Publication)) {
+      if (pub === false) {
+        console.warn(
+          `Error fetching publication with data "${this.data}", possibly because the DOI is not found?`
+        )
+      } else if (!(pub instanceof Publication)) {
         throw new Error("fetchPublication should return a Publication");
       }
       this.publication = pub;
@@ -109,6 +121,9 @@ export class SourceItem {
     let data;
     if (refresh) {
       const pub = await this.getPublication();
+      if(pub === false) {
+        return false
+      }
       data = pub.export;
       await this.setCache(data);
     } else {

@@ -12,14 +12,20 @@ export class OrcidSourceItem extends SourceItem {
   }
 
   async fetchPublication(opts = {}) {
-    if (!this.orcidId || !this.putCode) {
-      console.warn(`Cannot fetch full work without orcidId and putCode`);
-      return false;
-    } else {
+    // First try to fetch citation data from Crossref using DOI
+    if (this.doi && this.doi !== "") {
+      return await Publication.load(this.doi, opts);
+    }
+    
+    // Otherwise use ORCID citation data
+    if(this.orcidId && this.putCode) {
       const work = await OrcidWork.load(this.orcidId, this.putCode, {
         service: this.opts?.service,
       });
       return await Publication.loadOrcidWork(work, opts);
+    } else {
+      console.warn(`Cannot retrieve citation data without DOI or orcidId and putCode`);
+      return false;
     }
   }
 

@@ -44,8 +44,14 @@ export default class Publication {
     if (data instanceof Cite) {
       return new Publication(data, opts);
     } else {
-      const cite = await Cite.async(data);
-      return new Publication(cite, opts);
+      try {
+        const cite = await Cite.async(data);
+        return new Publication(cite, opts);
+      } catch {
+        // Occurs for example when a DOI is not found
+        // e.g. 10.3389/conf.fnhum.2013.214.00030
+        return false
+      }
     }
   }
 

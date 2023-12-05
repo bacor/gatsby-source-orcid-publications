@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import OrcidService from "./orcid-service.js";
+import OrcidService from "./orcid.js";
 
 export const ORCID_WORK_PROPERTIES = [
   "internalId",

@@ -29,9 +29,18 @@
   },
   "dependencies": {
     "@citation-js/plugin-bibjson": "^0.6.5",
+    "@citation-js/plugin-bibtex": "^0.7.2",
+    "@citation-js/plugin-isbn": "^0.4.0",
     "@citation-js/plugin-orcid": "^0.3.1",
+    "@citation-js/plugin-pubmed": "^0.3.0",
+    "@citation-js/plugin-refer": "^0.2.0",
+    "@citation-js/plugin-refworks": "^0.1.2",
+    "@citation-js/plugin-ris": "^0.7.4",
+    "@citation-js/plugin-software-formats": "^0.6.1",
+    "@citation-js/plugin-wikidata": "^0.7.2",
     "citation-js": "^0.6.7",
     "cli-progress": "^3.12.0",
+    "fastest-levenshtein": "^1.0.16",
     "slugify": "^1.6.6"
   },
   "devDependencies": {

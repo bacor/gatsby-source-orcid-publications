@@ -1,0 +1,722 @@
+{
+  "indexed": {
+    "date-parts": [[2023, 11, 5]],
+    "date-time": "2023-11-05T02:55:40Z",
+    "timestamp": 1699152940427
+  },
+  "reference-count": 53,
+  "publisher": "Elsevier BV",
+  "issue": "1",
+  "license": [
+    {
+      "start": {
+        "date-parts": [[2015, 4, 1]],
+        "date-time": "2015-04-01T00:00:00Z",
+        "timestamp": 1427846400000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100003825",
+      "name": "Hungarian Academy of Sciences",
+      "doi-asserted-by": "publisher"
+    },
+    {
+      "name": "Research Priority Area \u201cBrain & Cognition\u201d of the University of Amsterdam"
+    },
+    { "name": "National Research Fund of Hungary", "award": ["OTKA K101060"] }
+  ],
+  "content-domain": {
+    "domain": ["elsevier.com", "sciencedirect.com"],
+    "crossmark-restriction": true
+  },
+  "published-print": { "date-parts": [[2015, 4]] },
+  "DOI": "10.1016/j.ijpsycho.2015.02.024",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [[2015, 2, 24]],
+    "date-time": "2015-02-24T03:18:23Z",
+    "timestamp": 1424747903000
+  },
+  "page": "23-28",
+  "update-policy": "http://dx.doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 36,
+  "title": "Detecting the temporal structure of sound sequences in newborn infants",
+  "prefix": "10.1016",
+  "volume": "96",
+  "author": [
+    {
+      "given": "G\u00e1bor P.",
+      "family": "H\u00e1den",
+      "sequence": "first",
+      "affiliation": []
+    },
+    {
+      "given": "Henkjan",
+      "family": "Honing",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "Mikl\u00f3s",
+      "family": "T\u00f6r\u00f6k",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "Istv\u00e1n",
+      "family": "Winkler",
+      "sequence": "additional",
+      "affiliation": []
+    }
+  ],
+  "member": "78",
+  "reference": [
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0005",
+      "doi-asserted-by": "crossref",
+      "first-page": "151",
+      "DOI": "10.1016/0168-5597(90)90031-8",
+      "article-title": "Event-related brain potential of human newborns to pitch change of an acoustic stimulus",
+      "volume": "77",
+      "author": "Alho",
+      "year": "1990",
+      "journal-title": "Electroencephalogr. Clin. Neurophysiol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0010",
+      "doi-asserted-by": "crossref",
+      "first-page": "573",
+      "DOI": "10.1016/S0163-6383(97)90049-7",
+      "article-title": "Tempo discrimination in infants",
+      "volume": "20",
+      "author": "Baruch",
+      "year": "1997",
+      "journal-title": "Infant Behav. Dev."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0015",
+      "doi-asserted-by": "crossref",
+      "first-page": "31",
+      "DOI": "10.1016/S0166-4328(02)00098-0",
+      "article-title": "Infant discrimination of rapid auditory cues predicts later language impairment",
+      "volume": "136",
+      "author": "Benasich",
+      "year": "2002",
+      "journal-title": "Behav. Brain Res."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0020",
+      "doi-asserted-by": "crossref",
+      "first-page": "8447",
+      "DOI": "10.1523/JNEUROSCI.1493-09.2009",
+      "article-title": "I heard that coming: event-related potential evidence for stimulus-driven prediction in the auditory system",
+      "volume": "29",
+      "author": "Bendixen",
+      "year": "2009",
+      "journal-title": "J. Neurosci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0025",
+      "doi-asserted-by": "crossref",
+      "first-page": "239",
+      "DOI": "10.1016/j.erap.2005.09.006",
+      "article-title": "Influence of auditory tempo on the endogenous rhythm of non-nutritive sucking",
+      "volume": "56",
+      "author": "Bobin-B\u00e8gue",
+      "year": "2006",
+      "journal-title": "Eur. Rev. Appl. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0035",
+      "doi-asserted-by": "crossref",
+      "first-page": "227",
+      "DOI": "10.1016/j.cogbrainres.2004.04.007",
+      "article-title": "Timing in the baby brain",
+      "volume": "21",
+      "author": "Brannon",
+      "year": "2004",
+      "journal-title": "Brain Res. Cogn. Brain Res."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0030",
+      "doi-asserted-by": "crossref",
+      "first-page": "193",
+      "DOI": "10.1162/jocn.2008.20016",
+      "article-title": "Electrophysiological measures of time processing in infant and adult brains: Weber's law holds",
+      "volume": "22",
+      "author": "Brannon",
+      "year": "2008",
+      "journal-title": "J. Cogn. Neurosci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0040",
+      "doi-asserted-by": "crossref",
+      "first-page": "101",
+      "DOI": "10.1016/S0926-6410(01)00093-3",
+      "article-title": "Event-related potential features indexing central auditory discrimination by newborns",
+      "volume": "13",
+      "author": "\u010ceponien\u0117",
+      "year": "2002",
+      "journal-title": "Brain Res. Cogn. Brain Res."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0045",
+      "doi-asserted-by": "crossref",
+      "first-page": "471",
+      "DOI": "10.1207/S15326942DN2202_3",
+      "article-title": "Electric brain responses obtained from newborn infants to changes in duration in complex harmonic tones",
+      "volume": "22",
+      "author": "Cheour",
+      "year": "2002",
+      "journal-title": "Dev. Neuropsychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0050",
+      "doi-asserted-by": "crossref",
+      "first-page": "159",
+      "DOI": "10.1111/desc.12012",
+      "article-title": "Developmental trends in auditory processing can provide early predictions of language acquisition in young infants",
+      "volume": "16",
+      "author": "Chonchaiya",
+      "year": "2013",
+      "journal-title": "Dev. Sci"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0055",
+      "doi-asserted-by": "crossref",
+      "first-page": "1584",
+      "DOI": "10.2307/1130766",
+      "article-title": "Preference for infant directed speech in the first month after birth",
+      "volume": "61",
+      "author": "Cooper",
+      "year": "1990",
+      "journal-title": "Child Dev."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0060",
+      "doi-asserted-by": "crossref",
+      "first-page": "716",
+      "DOI": "10.1016/j.infbeh.2008.04.004",
+      "article-title": "Infants' discrimination of happy and sad music",
+      "volume": "31",
+      "author": "Flom",
+      "year": "2008",
+      "journal-title": "Infant Behav. Dev."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0065",
+      "doi-asserted-by": "crossref",
+      "first-page": "453",
+      "DOI": "10.1016/j.clinph.2008.11.029",
+      "article-title": "The mismatch negativity: a review of underlying mechanisms",
+      "volume": "120",
+      "author": "Garrido",
+      "year": "2009",
+      "journal-title": "Clin. Neurophysiol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0070",
+      "doi-asserted-by": "crossref",
+      "first-page": "887",
+      "DOI": "10.1038/nrn1538",
+      "article-title": "Opinion: what is an auditory object?",
+      "volume": "5",
+      "author": "Griffiths",
+      "year": "2004",
+      "journal-title": "Nat. Rev. Neurosci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0075",
+      "doi-asserted-by": "crossref",
+      "first-page": "720",
+      "DOI": "10.3758/s13414-010-0063-9",
+      "article-title": "Sensitivity to time interval changes in speech and tone conditions",
+      "volume": "73",
+      "author": "Grondin",
+      "year": "2011",
+      "journal-title": "Atten. Percept. Psychophys."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0080",
+      "doi-asserted-by": "crossref",
+      "first-page": "674",
+      "DOI": "10.3389/fpsyg.2013.00674",
+      "article-title": "Context effects on processing widely deviant sounds in newborn infants",
+      "volume": "4",
+      "author": "H\u00e1den",
+      "year": "2013",
+      "journal-title": "Front. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0085",
+      "series-title": "The Psychology of Music",
+      "first-page": "369",
+      "article-title": "Structure and interpretation of rhythm in music",
+      "author": "Honing",
+      "year": "2013"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0095",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1111/1540-5834.00137",
+      "article-title": "Rhythms of dialogue in infancy: coordinated timing in development",
+      "volume": "66",
+      "author": "Jaffe",
+      "year": "2001",
+      "journal-title": "Monogr. Soc. Res. Child Dev."
+    },
+    {
+      "issue": "2",
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0100",
+      "first-page": "21",
+      "article-title": "Time after time: the coordinating influence of tempo in music and speech",
+      "volume": "1",
+      "author": "Jungers",
+      "year": "2002",
+      "journal-title": "Cogn. Process"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0105",
+      "doi-asserted-by": "crossref",
+      "first-page": "3777",
+      "DOI": "10.1097/00001756-200112040-00035",
+      "article-title": "Event-related potential correlates of sound duration: similar pattern from birth to adulthood",
+      "volume": "12",
+      "author": "Kushnerenko",
+      "year": "2001",
+      "journal-title": "NeuroReport"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0110",
+      "doi-asserted-by": "crossref",
+      "first-page": "47",
+      "DOI": "10.1097/00001756-200201210-00014",
+      "article-title": "Maturation of the auditory event-related potentials during the first year of life",
+      "volume": "13",
+      "author": "Kushnerenko",
+      "year": "2002",
+      "journal-title": "NeuroReport"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0115",
+      "doi-asserted-by": "crossref",
+      "first-page": "265",
+      "DOI": "10.1111/j.1460-9568.2007.05628.x",
+      "article-title": "Processing acoustic change and novelty in newborn infants",
+      "volume": "26",
+      "author": "Kushnerenko",
+      "year": "2007",
+      "journal-title": "Eur. J. Neurosci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0120",
+      "doi-asserted-by": "crossref",
+      "first-page": "595",
+      "DOI": "10.3389/fpsyg.2013.00595",
+      "article-title": "Separating acoustic deviance from novelty during the first year of life: a review of event-related potential evidence",
+      "volume": "4",
+      "author": "Kushnerenko",
+      "year": "2013",
+      "journal-title": "Front. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0130",
+      "doi-asserted-by": "crossref",
+      "first-page": "1001",
+      "DOI": "10.1037/0012-1649.35.4.1001",
+      "article-title": "Preference for infant-directed singing in 2-day-old hearing infants of deaf parents",
+      "volume": "35",
+      "author": "Masataka",
+      "year": "1999",
+      "journal-title": "Dev. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0135",
+      "doi-asserted-by": "crossref",
+      "first-page": "66",
+      "DOI": "10.1111/j.1469-8986.2009.00856.x",
+      "article-title": "Mismatch negativity (MMN), the deviance-elicited auditory deflection, explained",
+      "volume": "47",
+      "author": "May",
+      "year": "2010",
+      "journal-title": "Psychophysiology"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0145",
+      "doi-asserted-by": "crossref",
+      "first-page": "201",
+      "DOI": "10.1017/S0140525X00078407",
+      "article-title": "The role of attention in auditory information processing as revealed by event related potentials and other brain measures of cognitive function",
+      "volume": "13",
+      "author": "N\u00e4\u00e4t\u00e4nen",
+      "year": "1990",
+      "journal-title": "Behav. Brain Sci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0160",
+      "doi-asserted-by": "crossref",
+      "first-page": "375",
+      "DOI": "10.1111/j.1469-8986.1987.tb00311.x",
+      "article-title": "The N1 wave of the human electric and magnetic response to sound: a review and an analysis of the component structure",
+      "volume": "24",
+      "author": "N\u00e4\u00e4t\u00e4nen",
+      "year": "1987",
+      "journal-title": "Psychophysiology"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0155",
+      "doi-asserted-by": "crossref",
+      "first-page": "4",
+      "DOI": "10.1111/j.1469-8986.2010.01114.x",
+      "article-title": "Auditory processing that leads to conscious perception: a unique window to central auditory processing opened by the mismatch negativity (MMN) and related responses",
+      "volume": "48",
+      "author": "N\u00e4\u00e4t\u00e4nen",
+      "year": "2011",
+      "journal-title": "Psychophysiology"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0170",
+      "doi-asserted-by": "crossref",
+      "first-page": "233",
+      "DOI": "10.1016/S0167-6393(02)00106-1",
+      "article-title": "Perception and acquisition of linguistic rhythm by infants",
+      "volume": "41",
+      "author": "Nazzi",
+      "year": "2003",
+      "journal-title": "Speech Comm."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0165",
+      "doi-asserted-by": "crossref",
+      "first-page": "756",
+      "DOI": "10.1037/0096-1523.24.3.756",
+      "article-title": "Language discrimination by newborns: towards an understanding of the role of rhythm",
+      "volume": "24",
+      "author": "Nazzi",
+      "year": "1998",
+      "journal-title": "J. Exp. Psychol. Hum. Percept. Perform."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0175",
+      "doi-asserted-by": "crossref",
+      "first-page": "412",
+      "DOI": "10.1016/j.clinph.2006.10.008",
+      "volume": "118",
+      "author": "Novitski",
+      "year": "2007",
+      "journal-title": "Neurophysiology"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0180",
+      "series-title": "Communicating with One Another",
+      "author": "O'Connell",
+      "year": "2008"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0185",
+      "doi-asserted-by": "crossref",
+      "first-page": "315",
+      "DOI": "10.1016/j.biopsycho.2012.09.009",
+      "article-title": "Detecting violations of temporal regularities in waking and sleeping two-month-old infants",
+      "volume": "92",
+      "author": "Otte",
+      "year": "2013",
+      "journal-title": "Biol. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0190",
+      "series-title": "Music, Language, and the Brain",
+      "author": "Patel",
+      "year": "2008"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0195",
+      "doi-asserted-by": "crossref",
+      "first-page": "20130090",
+      "DOI": "10.1098/rstb.2013.0090",
+      "article-title": "From temporal processing to developmental language disorders: mind the gap",
+      "volume": "369",
+      "author": "Protopapas",
+      "year": "2014",
+      "journal-title": "Philos. Trans. R. Soc. B"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0200",
+      "doi-asserted-by": "crossref",
+      "first-page": "353",
+      "DOI": "10.1016/j.wocn.2006.09.001",
+      "article-title": "On the just noticeable difference for tempo in speech",
+      "volume": "35",
+      "author": "Quen\u00e9",
+      "year": "2007",
+      "journal-title": "J. Phon."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0205",
+      "doi-asserted-by": "crossref",
+      "first-page": "349",
+      "DOI": "10.1126/science.288.5464.349",
+      "article-title": "Language discrimination by human newborns and by cotton-top tamarin monkeys",
+      "volume": "288",
+      "author": "Ramus",
+      "year": "2000",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0215",
+      "doi-asserted-by": "crossref",
+      "first-page": "1104",
+      "DOI": "10.1044/1092-4388(2006/079)",
+      "volume": "49",
+      "author": "Smith",
+      "year": "2006",
+      "journal-title": "J. Speech Lang. Hear. Res."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0220",
+      "doi-asserted-by": "crossref",
+      "first-page": "697",
+      "DOI": "10.1111/j.1469-8986.2007.00540.x",
+      "article-title": "Auditory temporal grouping in newborn infants",
+      "volume": "44",
+      "author": "Stefanics",
+      "year": "2007",
+      "journal-title": "Psychophysiology"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0225",
+      "doi-asserted-by": "crossref",
+      "first-page": "14726",
+      "DOI": "10.1523/JNEUROSCI.1246-09.2009",
+      "article-title": "Sensitivity of newborn auditory cortex to the temporal structure of sounds",
+      "volume": "29",
+      "author": "Telkemeyer",
+      "year": "2009",
+      "journal-title": "J. Neurosci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0230",
+      "article-title": "Acoustic processing of temporally modulated sounds in infants: evidence from a combined near-infrared spectroscopy and EEG study",
+      "volume": "2",
+      "author": "Telkemeyer",
+      "year": "2011",
+      "journal-title": "Front. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0235",
+      "doi-asserted-by": "crossref",
+      "first-page": "2443",
+      "DOI": "10.1097/00001756-200108080-00031",
+      "article-title": "Measuring temporal resolution in infants using mismatch negativity",
+      "volume": "12",
+      "author": "Trainor",
+      "year": "2001",
+      "journal-title": "NeuroReport"
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0240",
+      "doi-asserted-by": "crossref",
+      "first-page": "5",
+      "DOI": "10.1016/S0167-8760(03)00148-X",
+      "article-title": "Changes in auditory cortex and the development of mismatch negativity between 2 and 6months of age",
+      "volume": "51",
+      "author": "Trainor",
+      "year": "2003",
+      "journal-title": "Int. J. Psychophysiol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0245",
+      "doi-asserted-by": "crossref",
+      "first-page": "289",
+      "DOI": "10.1111/j.1467-7687.2004.00348.x",
+      "article-title": "Long-term memory for music: infants remember tempo and timbre",
+      "volume": "7",
+      "author": "Trainor",
+      "year": "2004",
+      "journal-title": "Dev. Sci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0255",
+      "doi-asserted-by": "crossref",
+      "first-page": "169",
+      "DOI": "10.1016/j.biopsycho.2009.07.004",
+      "article-title": "Auditory size-deviant detection in adults and newborn infants",
+      "volume": "82",
+      "author": "Vestergaard",
+      "year": "2009",
+      "journal-title": "Biol. Psychol."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0260",
+      "doi-asserted-by": "crossref",
+      "first-page": "275",
+      "DOI": "10.1016/j.jcomdis.2007.03.004",
+      "article-title": "Issues in human auditory development",
+      "volume": "40",
+      "author": "Werner",
+      "year": "2007",
+      "journal-title": "Commun. Disord."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0265",
+      "doi-asserted-by": "crossref",
+      "first-page": "260",
+      "DOI": "10.2307/1131477",
+      "article-title": "Infant auditory temporal acuity: gap detection",
+      "volume": "63",
+      "author": "Werner",
+      "year": "1992",
+      "journal-title": "Child Dev."
+    },
+    {
+      "issue": "3\u20134",
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb9000",
+      "doi-asserted-by": "crossref",
+      "first-page": "147",
+      "DOI": "10.1027/0269-8803.21.34.147",
+      "article-title": "Interpreting the mismatch negativity",
+      "volume": "21",
+      "author": "Winkler",
+      "year": "2007",
+      "journal-title": "J. Psychophysiol."
+    },
+    {
+      "issue": "20",
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0280",
+      "doi-asserted-by": "crossref",
+      "first-page": "11812",
+      "DOI": "10.1073/pnas.2031891100",
+      "article-title": "Newborn infants can organize the auditory world",
+      "volume": "100",
+      "author": "Winkler",
+      "year": "2003",
+      "journal-title": "Proc. Natl. Acad. Sci. U. S. A."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0270",
+      "doi-asserted-by": "crossref",
+      "first-page": "532",
+      "DOI": "10.1016/j.tics.2009.09.003",
+      "article-title": "Modeling the auditory scene: predictive regularity representations and perceptual objects",
+      "volume": "13",
+      "author": "Winkler",
+      "year": "2009",
+      "journal-title": "Trends Cogn. Sci."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0275",
+      "doi-asserted-by": "crossref",
+      "first-page": "2468",
+      "DOI": "10.1073/pnas.0809035106",
+      "article-title": "Newborn infants detect the beat in music",
+      "volume": "106",
+      "author": "Winkler",
+      "year": "2009",
+      "journal-title": "Proc. Natl. Acad. Sci. U. S. A."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0285",
+      "doi-asserted-by": "crossref",
+      "first-page": "185",
+      "DOI": "10.1016/j.heares.2005.11.010",
+      "article-title": "Maturation of the cortical auditory evoked potential in infants and young children",
+      "volume": "212",
+      "author": "Wunderlich",
+      "year": "2006",
+      "journal-title": "Hear. Res."
+    },
+    {
+      "key": "10.1016/j.ijpsycho.2015.02.024_bb0290",
+      "doi-asserted-by": "crossref",
+      "first-page": "125",
+      "DOI": "10.1111/j.1460-9568.2009.06790.x",
+      "article-title": "Automatic auditory off\u2010response in humans: an MEG study",
+      "volume": "30",
+      "author": "Yamashiro",
+      "year": "2009",
+      "journal-title": "Eur. J. Neurosci."
+    }
+  ],
+  "container-title": "International Journal of Psychophysiology",
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0167876015000707?httpAccept=text/xml",
+      "content-type": "text/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0167876015000707?httpAccept=text/plain",
+      "content-type": "text/plain",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    }
+  ],
+  "deposited": {
+    "date-parts": [[2018, 9, 24]],
+    "date-time": "2018-09-24T22:53:19Z",
+    "timestamp": 1537829599000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0167876015000707"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": { "date-parts": [[2015, 4]] },
+  "references-count": 53,
+  "journal-issue": {
+    "issue": "1",
+    "published-print": { "date-parts": [[2015, 4]] }
+  },
+  "alternative-id": ["S0167876015000707"],
+  "URL": "http://dx.doi.org/10.1016/j.ijpsycho.2015.02.024",
+  "relation": {},
+  "ISSN": ["0167-8760"],
+  "subject": [
+    "Physiology (medical)",
+    "Neuropsychology and Physiological Psychology",
+    "General Neuroscience"
+  ],
+  "container-title-short": "International Journal of Psychophysiology",
+  "published": { "date-parts": [[2015, 4]] },
+  "assertion": [
+    {
+      "value": "Elsevier",
+      "name": "publisher",
+      "label": "This article is maintained by"
+    },
+    {
+      "value": "Detecting the temporal structure of sound sequences in newborn infants",
+      "name": "articletitle",
+      "label": "Article Title"
+    },
+    {
+      "value": "International Journal of Psychophysiology",
+      "name": "journaltitle",
+      "label": "Journal Title"
+    },
+    {
+      "value": "https://doi.org/10.1016/j.ijpsycho.2015.02.024",
+      "name": "articlelink",
+      "label": "CrossRef DOI link to publisher maintained version"
+    },
+    { "value": "article", "name": "content_type", "label": "Content Type" },
+    {
+      "value": "Copyright \u00a9 2015 Elsevier B.V. All rights reserved.",
+      "name": "copyright",
+      "label": "Copyright"
+    }
+  ]
+}

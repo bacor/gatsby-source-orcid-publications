@@ -1,124 +1,85 @@
-import { distance } from "fastest-levenshtein";
 import { Cite } from "@citation-js/core";
 import "@citation-js/plugin-csl";
 import "@citation-js/plugin-doi";
-
 import "./plugins/plugin-file.js";
 import "./plugins/plugin-orcid.js";
+import { normalizeDoi, groupDuplicates } from "./compare.js";
 
-export function normalizeDoi(doi) {
-  return doi.toLowerCase().replace(/https?:\/\/doi.org\//, "");
-}
-
-export function compareDois(a, b) {
-  const doiA = a._normDoi || a.DOI;
-  const doiB = b._normDoi || b.DOI;
-  if (doiA && doiB) {
-    return doiA === doiB;
-  } else {
-    return null;
-  }
-}
-
-export function compareTitles(a, b, maxDist = 3, length = 30) {
-  if (a.title && b.title) {
-    const normTitle1 = a.title.toLowerCase().trim().slice(0, length);
-    const normTitle2 = b.title.toLowerCase().trim().slice(0, length);
-    return distance(normTitle1, normTitle2) <= maxDist;
-  } else {
-    return null;
-  }
-}
-
-export function compare(a, b, testFns = [compareDois, compareTitles]) {
-  if (testFns.length === 0)
-    throw new Error("Please provide at least one test function");
-
-  // Test equality of two items a and b, using a list of test functions.
-  // The first function that returns true or false determines the outcome;
-  // if no function can determine equality, the function returns false.
-  for (const testFn of testFns) {
-    const outcome = testFn(a, b);
-    if (outcome === true || outcome === false) {
-      return outcome;
-    } else if (outcome === null) {
-      continue;
-    } else {
-      throw new Error(
-        `Invalid outcome ${outcome} of test function ${testFn}: test functions should return true, false, or null`
-      );
-    }
-  }
-  return false;
-}
-
-export function groupDuplicates(
-  array,
-  { testFns, exhaustive = true, debug = false } = {}
-) {
-  // We check for all items A whether they have duplicates in a set of candidates
-  // If A turns out to be unique, we remove it from the candidates. If A has a
-  // duplicate B, we register A.duplicates = B.duplicates = {A, B}
-  // It is possible that the method of checking duplicates would identify A=B and B=C,
-  // for some C, but not A=C. And so we should not remove B from the candidates,
-  // so that we can still identify B=C and collect all duplicates {A, B, C}.
-  // If `exhaustive == true`, we keep B in the candidates and thus do an exhaustive
-  // check for duplicates. If `exhaustive == false`, we remove B from the candidates,
-  // to reduce the number of candidates that need checking, at the possible cost of
-  // missing some duplicates.
-  const groups = {};
-  const candidates = new Set([...Array(array.length).keys()]);
-  candidates.forEach((a) => {
-    groups[a] = new Set([a]);
-  });
-
-  let numComparisons = 0;
-  candidates.forEach((a) => {
-    candidates.forEach((b) => {
-      if (a === b) return;
-      if (groups[a].has(b)) return;
-
-      numComparisons += 1;
-      if (compare(array[a], array[b], testFns) === true) {
-        groups[b].forEach((c) => groups[a].add(c));
-        groups[b] = groups[a];
-        if (exhaustive === false) {
-          candidates.delete(b);
-        }
+/**
+ * Turn an array of exclusion rules into an array of test functions, each
+ * returning true if an item should be excluded.
+ *
+ * Typical usage:
+ *
+ *  {
+ *    exclude: [
+ *      { field: "DOI", values: ['10.006/...', '10.007/...'] },
+ *      { field: "title", regexp: "A grandiose critique*" },
+ *      { before: 2010, after: 2020 },
+ *      (item) => item.title.length < 5
+ *    ]
+ *   }
+ *
+ * @param {object[]} exclude An array of exclude rules
+ * @return {function[]} An array of functions that return true if an item should be excluded
+ */
+function exclusionRules(exclude) {
+  return exclude.map((rule) => {
+    if (typeof rule === "function") {
+      return rule;
+    } else if (typeof rule === "object") {
+      if (rule.field && rule.values) {
+        // e.g. { field: "DOI", values: ['10.006/...', '10.007/...'] }
+        return (item) =>
+          item[rule.field] && rule.values.includes(item[rule.field]);
+      } else if (rule.field && rule.regexp) {
+        // e.g. { field: "title", regexp: "A grandiose critique*" }
+        return (item) => {
+          return item[rule.field] && item[rule.field].match(rule.regexp);
+        };
+      } else if (rule.before || rule.after) {
+        // e.g. { before: 2010, after: 2020 }
+        return (item) => {
+          try {
+            const before = rule.before || -99999;
+            const after = rule.after || 99999;
+            const year = item.issued["date-parts"][0][0];
+            return year < before || year > after;
+          } catch {
+            return false;
+          }
+        };
       }
-    });
-
-    // Remove itemA from the candidates: it is unique
-    if (groups[a].length === 1) {
-      candidates.delete(a);
     }
   });
-
-  const uniqueGroups = new Set([...Object.values(groups)]);
-  if (debug) {
-    console.log(
-      `Found ${uniqueGroups.size} equivalence classes among ${array.length} items (in ${numComparisons} comparisons)`
-    );
-  }
-  return uniqueGroups;
 }
 
+/**
+ * A class that manages references from multiple sources. It tracks the source
+ * each publication came from, and also allows you to remove duplicates. In that
+ * case it registers all sources a publication was found in. Finally, it exports
+ * publications to ordered, formatted references.
+ */
 export default class ReferenceManager {
   constructor() {
     this.cite = new Cite();
     this.sources = {};
   }
 
-  async add({
-    data,
-    name,
-    exclude,
-    // filters = [],
-    priority = 0,
-    ...props
-  } = {}) {
+  /**
+   * Add a new source to the reference manager. You can pass any type of data
+   * that can be parsed by citation-js. You can also pass various exclusion rules
+   * that allow you to exclude certain publications (see exclusionRules). Finally,
+   * each source can have a priority. If a publication appears in multiple sources,
+   * the publication from the source with the highest priority is kept.
+   *
+   * @param {*} opts.data Any type of data that can be parsed by citation-js
+   * @param {string} opts.name The name of the source
+   * @param {object[]} opts.exclude An array of exclusion rules, see exclusionRules()
+   * @param {number} opts.priority The priority of this source (default: 0)
+   */
+  async add({ data, name, exclude, priority = 0, ...props } = {}) {
     let cite;
-    // Test if this is an ORCID ID
     try {
       cite = await new Cite.async(data);
     } catch (err) {
@@ -141,49 +102,23 @@ export default class ReferenceManager {
       ...props,
     };
 
-    // Combine exclusion filters
     if (exclude) {
-      let rules = exclude.map((rule) => {
-        if (typeof rule === "function") {
-          return rule;
-        } else if (typeof rule === "object") {
-          if (rule.field && rule.values) {
-            // e.g. { field: "DOI", values: ['10.006/...', '10.007/...'] }
-            return (item) =>
-              item[rule.field] && rule.values.includes(item[rule.field]);
-          } else if (rule.field && rule.regexp) {
-            // e.g. { field: "title", regexp: "A grandiose critique*" }
-            return (item) => {
-              return item[rule.field] && item[rule.field].match(rule.regexp);
-            };
-          } else if (rule.before || rule.after) {
-            // e.g. { before: 2010, after: 2020 }
-            return (item) => {
-              try {
-                const before = rule.before || -99999;
-                const after = rule.after || 99999;
-                const year = item.issued["date-parts"][0][0];
-                return year < before || year > after;
-              } catch {
-                return false;
-              }
-            };
-          }
-        }
-      });
-
       // Filter function: true if none of the exclusion rules apply to an item
+      const rules = exclusionRules(exclude);
       const filterFn = (item) => rules.map((fn) => !fn(item)).every(Boolean);
       this.cite.data.push(...cite.data.filter(filterFn));
     } else {
-      // Add source to citation objects
       this.cite.data.push(...cite.data);
     }
   }
 
+  /**
+   * Resolve duplicates by returning the one from the highest-priority source.
+   *
+   * @param {Cite[]} items An array of publications
+   * @returns {Cite}
+   */
   resolveDuplicates(items) {
-    // Compute the priority of each item: the priority of
-    // the highest-priority source (usually item._sources contains only one source)
     const priorities = items.map((item) =>
       Math.max(...item._sources.map((s) => this.sources[s]?.priority || 0))
     );
@@ -191,7 +126,17 @@ export default class ReferenceManager {
     return items[index];
   }
 
-  deduplicate({ resolveFn, inPlace = true, ...opts } = {}) {
+  /**
+   * Remove all duplicate publications. By default, the publication from the
+   * highest-priority source is kept. You can pass a custom resolve function
+   * to change this behaviour.
+   *
+   * @param {function} opts.resolveFn A function that takes an array of duplicate items
+   * And returns the item that should be kept. By default, the item with
+   * the highest priority will be kept.
+   * @param {*} opts.others Other arguments are passed to groupDuplicates()
+   */
+  deduplicate({ resolveFn, ...opts } = {}) {
     const groups = groupDuplicates(this.cite.data, opts);
     let resolver = resolveFn || ((items) => this.resolveDuplicates(items));
     const uniqueRefs = [...groups].map((group) => {
@@ -200,14 +145,26 @@ export default class ReferenceManager {
       resolved._sources = items.flatMap((item) => item._sources);
       return resolved;
     });
-
-    if (inPlace) this.cite.data = uniqueRefs;
+    this.cite.data = uniqueRefs;
   }
 
+  /**
+   * Export all publications as an array of objects.
+   *
+   * @param {string} opts.style The citation style to use (default: apa)
+   * @param {string} opts.locale The locale (default: en-US)
+   * @param {function} opts.customFields A function that takes a citation object
+   * and returns an object with custom fields. This is applied to every publication
+   * before it is exported.
+   * @param {function} opts.transform A function that takes a citation object
+   * and returns a transformed citation object. You might for example use this to
+   * transform the HTML output and turn a DOI into an anchor element.
+   * @returns
+   */
   output({
     style = "apa",
     locale = "en-US",
-    customFields = () => ({}), // customFields should take the cite object and return an object with custom fields
+    customFields = () => ({}),
     transform = (entry) => entry,
   } = {}) {
     const opts = { template: style, locale };

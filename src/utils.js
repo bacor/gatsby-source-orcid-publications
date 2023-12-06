@@ -1,5 +1,12 @@
 import { plugins } from "@citation-js/core";
 
+/**
+ * Register a new CSL citation style to citation-js.
+ *
+ * @param {string} style Name of the style to use
+ * @param {string} template Optional CSL template to use (https://...)
+ * @return {string} the format name
+ */
 export async function registerCitationStyle(style, template) {
   const config = plugins.config.get("@csl");
   const styles = Object.keys(config.templates.data);

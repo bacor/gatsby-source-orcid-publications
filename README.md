@@ -1,8 +1,8 @@
 # `gatsby-source-publications`
 
-[Gatsby](https://gatsbyjs.com/) source plugin to pull publications from bibtex, DOIs, or [ORCID](https://orcid.org/) and format them using [Citation.js](https://citation.js.org/). The key features:
+[Gatsby](https://gatsbyjs.com/) source plugin to pull publications from a wide range of sources, such as bibtex, DOIs,[ORCID](https://orcid.org/), pubmed, Refworks, Wikidata — heavily building on  [Citation.js](https://citation.js.org/). The key features:
 
-- Pull publications from multiple sources: BibTex, DOIs and ORCID.
+- Pull publications from many types of sources: BibTex, DOIs, ORCID, pubmed, RIS, ISBN, Wikidata, Refer, and Refworks. Basically, if there is a citation-js plugin for it, you can add it.
 - Formatted bibliography using custom citation styles
 - Query publications in GraphQL
 - Easily filter which publications are added to the graph 
@@ -19,9 +19,9 @@ plugins: [
     options: {
       sources: [
         {
-          type: "bibtex",
-          name: "my-publication",
-          path: path.resolve('./src/my-bibliography.bib')
+          data: path.resolve('./src/my-bibliography.bib') // Required
+          format: "bibtex", // ~required (to load the right plugins)
+          name: "my-publication" // Optional
         }
       ]
     },
@@ -43,35 +43,46 @@ plugins: [
       sources: [
         { 
           // Fetch all works from a given ORCIDiD
-          type: "orcid", 
+          format: "orcid", 
+          data: "0000-0002-0766-7305",
           name: "bcornelissen", 
-          orcidId: "0000-0002-0766-7305",
-          // You can exclude some of them using a filter...
-          filter: (item) => item.year > 2020,
-          // ...or by passing a list of DOIs to exlucde
-          excludeDOIs: ['10.1177/10298649221149109'],
+          exclude: [
+            // Exclude items by a field value...
+            { field: "DOI", values: ['10.1177/10298649221149109'] },
+            // ... or using some regular expression
+            { field: "title", regexp: "Zebra finches*" }
+            // ... or filter by year (a shorthand)
+            { before: 2020, after: 2023 },
+            // ... or pass a custom filter
+            (item) => item.title.length < 3
+          ]
         },
         { 
           // And another one...
-          type: "orcid", 
+          format: "orcid", 
+          data: "0000-0001-6854-5646"
           name: "jaburgoyne", 
-          orcidId: "0000-0001-6854-5646"
         },
         {
           // Or you can pass a list of DOIs to load
-          type: "doi",
+          format: "doi",
           name: "some-dois",
-          DOIs: [
+          data: [
             "10.31234/osf.io/qjfpe", 
             "10.1177/10298649221149109",
             "10.1007/s10071-023-01763-4"
-          ]
+          ],
         },
         {
-          // Or read out a bibtex file
-          type: "bibtex"
+          format: "bibtex"
           name: "my-bibtex-pubs",
-          path: path.resolve('./src/my-bibliography.bib')
+          data: path.resolve('./src/my-corrections.bib')
+          
+          // You can give sources a priority. When publication occurs 
+          // in multiple sources, the version from the highest-priority 
+          // source is kept. You could for example use this to fix 
+          // mistakes from other sources
+          priority: 10
         }
       ],
       
@@ -96,6 +107,7 @@ query MyQuery {
       html # formatted html reference
       text # plain text reference
       sources # list of source names
+      order # the order in the the sorted publication list
       # The Cite object is exported to bibjson, and all its fields
       # are added to the graph under props:
       props {
@@ -118,30 +130,32 @@ query MyQuery {
 
 ## Sources
 
-The plugin fetches and combines publications from multiple sources. Three types of sources are currently supported: BibTex, DOIs and ORCID. 
-You can pass as many sources as you like to `plugins.options.sources` using dictionaries of the following form:
+The plugin fetches and combines publications from multiple sources. You can pass as many sources as you like to `plugins.options.sources` using dictionaries of the following form:
 
 ```js
 {
-  // Required options
-  type: 'orcid', // one of 'orcid', 'bibtex' or 'doi'
-  name: 'my_name' // required
+  // 'orcid', 'bibtex', 'doi', 'ris', 'isbn', 'wikidata', 'refer', 'refworks'
+  // This is mostly used to ensure the right citation-js plugins are loaded
+  format: 'orcid', 
 
-  // Required when type == 'bibtex', either one of these:
-  path: '' // path to a bibtex file
-  bibtex: '' // or, alternatively the contents of a bibtex file
+  // Name of the source
+  name: 'my_name'
 
-  // Required when type == 'orcid'
-  orcidId: '0000-0001-6854-5646'  // an ORCIDiD
-
-  // Required when type == 'doi'
-  DOIs: [...] // a list of dois
-
-   // Optional: excludes items for which the filter returns false
-  filter: (item) => true 
+  // The data passed to citation-js. This can be many things,
+  // from a list of DOIs to a filename, to an ORCID id.
+  data: ''
   
-  // Optional: exlude certain DOIs (a shorthand filter)
-  excludeDOIs: [...] // A list of DOIs that are excluded
+  // Optional: exclusion rules
+  exclude: [
+    // Exclude items by a field value...
+    { field: "DOI", values: ['10.1177/10298649221149109'] },
+    // ... or using some regular expression
+    { field: "title", regexp: "Zebra finches*" }
+    // ... or filter by year (a shorthand)
+    { before: 2020, after: 2023 },
+    // ... or pass a custom filter
+    (item) => item.title.length < 3
+  ]
 }
 ```
 
@@ -151,11 +165,12 @@ You can pass as many sources as you like to `plugins.options.sources` using dict
 - **`style`** (optional string, default `'apa'`). Name of the citation style. The styles that are included by default in Citation.js are `'apa'`, `'vancouver'`, and `'harvard1'`. This field is ignored if you also specify a custom CSL template
 - **`template`** (optional string). A custom CSL template, passed as an url or an XML string. 
 - **`locale`** (optional string, default `'en-US'`). The locale, used by Citation.js. Supported values are `'en-US'`, `'es-ES'`, `'de-DE'`, `'fr-FR'`, and `'nl-NL'`.
-- **`skipWithoutBibtexOrDoi`** (optional boolean, default `false`). If `true`, all works without bibtex or doi are skipped. It is possible to construct Cite objects for such works from the information returned by ORCID, but they maybe turn out to be incomplete.
-- **`replaceDOIsByAnchors`** (optional boolean, default `true`). If this is enabled and the style is `'apa'`, then the DOIs at the end of the formatted HTML reference are replaced by anchors.
 - **`nodeType`** (optional string, default `'Publication'`). Name of the nodes.
-- **`orcidEndpoint`** (optional string, default `'https://pub.orcid.org/v3.0'`). The ORCID endpoint from which to fetch all data.
-- **`delayAfterFetch`** (optional int, default `25`ms). The delay in ms after every request to ORCID.
+- **`refresh`** (optional boolean) whether to refresh the cache
+- **`customFields`** (optional function) a function that takes a cite object and returns an object with custom fields. These are exported to the graph.
+- **`outputTransform`** (optional function) a function that takes a publication object, transforms it in whatever way you like and returns the modified object before it is added to the graph. You can use this to e.g. tweak HTML output.
+- **`serviceName`**, **`serviceEmail`** and **`serviceDomain`** specify these to ensure you end up in the pool of polite users of Crossref.
+- **`silent`** (optional boolean) to supress all loggin (not yet fully implemented)
 
 ## Custom citation styles
 
@@ -185,35 +200,29 @@ module.exports = {
 };
 ```
 
-## Resolving duplicate publications
+## Resolving duplicate publications (To be updated)
 
 The same publication could appear in multiple sources. The plugin first tries to identify and remove duplicates using (normalized) DOIs. If no DOI can be found, the plugin uses the year and title, but this may not always work well. If problems arise, edit the source data so that the works in question all have the same DOI, or otherwise have identical titles. You can also write a custom filter to remove duplicates. 
 
 The plugin tracks from which source each publication was retrieved using the `source.name` field. If a publication is for example found in sources with names `source_1` and `source_2` then one node will be created, and it will have `Publication.sources = ['source_1', 'source_2']`.
 
-## Filtering publications
+## Filtering publications (To be updated)
 
-You can of course filter publications using GraphQL queries, but you can also prevent certain publications from being added to the graph altogether. (This may for example reduce build time for ORCID sources in particular). To filter publications *before nodes are created*, pass a `source.filter` function, that takes a `SourceItem` and returns `true` if the item is to be included:
+You can of course filter publications using GraphQL queries, but you can also prevent certain publications from being added to the graph altogether. (This may for example reduce build time for ORCID sources in particular). To filter publications *before nodes are created*, pass a `source.exclude` function, that takes a `Cite` object and returns `true` if the item is to be excluded:
 
 ```js
 {
   type: 'orcid',
   name: 'my_source'
   //...
-  filter: (item) => {
-    // Your fancy filtering function
-    return item.year > 2020
-  }
+  exclude: [
+    (item) => {
+      // Your fancy filtering function
+      return item.year > 2020
+    }
+  ]
 }
 ```
-
-The `item` is a `SourceItem` instance, and does not *yet* contain all information about the publication: this is fetched only when it is really needed, when nodes are finally created. Which data is available depends on the source type:
- 
-- **DOI.** With `DOISourceItems` you can use `item.doi` and `item.id`
-- **ORCID.** With `OrcidSourceItem` you can use the properties `id`, `lastModified`, `created`, `putCode`, `path`, `doi`, `type`, `title`, `journal`, `year`.
-- **BibTex.** With `BibTexSourceItem` you can use `id`, `doi`, `citationKey`, `title`, `year`, or other fields by accessing `item.data` directly.
-
-(N.B.: If you really need all data, you can hack the filter by accessing `item.export`. This will fetch and cache all data for that item.)
 
 ## Linking publications
 

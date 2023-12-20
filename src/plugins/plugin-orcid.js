@@ -9,7 +9,7 @@ import { CONFIG } from "../index.js";
 
 export async function tryToParseCiteData(data, messageFn) {
   try {
-    const cite = await new Cite.async(data);
+    const cite = await Cite.async(data);
     return cite.data[0];
   } catch (err) {
     if (CONFIG.debug) {

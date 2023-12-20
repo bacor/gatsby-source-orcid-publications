@@ -4,6 +4,6 @@ import "@citation-js/plugin-bibtex";
 
 test("@file", async () => {
   const path = "./test/bcornelissen.bib"
-  const cite = await new Cite.async(path);
+  const cite = await Cite.async(path);
   expect(cite.data.length).toBe(5)
 });

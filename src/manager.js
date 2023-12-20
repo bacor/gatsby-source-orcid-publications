@@ -81,7 +81,7 @@ export default class ReferenceManager {
   async add({ data, name, exclude, priority = 0, ...props } = {}) {
     let cite;
     try {
-      cite = await new Cite.async(data);
+      cite = await Cite.async(data);
     } catch (err) {
       console.warn(err);
     }

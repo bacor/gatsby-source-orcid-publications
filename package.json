@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-publications",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A Gatsby source plugin that pulls publications from various sources (DOIs, bibtex, ORCID, PubMed, Wikidata, and more).",
   "main": "index.js",
   "type": "module",

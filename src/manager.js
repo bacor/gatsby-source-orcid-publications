@@ -142,7 +142,7 @@ export default class ReferenceManager {
     const uniqueRefs = [...groups].map((group) => {
       const items = [...group].map((index) => this.cite.data[index]);
       const resolved = resolver(items);
-      resolved._sources = items.flatMap((item) => item._sources);
+      resolved._sources = [...new Set(items.flatMap((item) => item._sources))];
       return resolved;
     });
     this.cite.data = uniqueRefs;

@@ -50,12 +50,6 @@ export async function sourceNodes(
 
     // prevent any logging
     silent = false,
-
-    // No longer used
-    // skipWithoutBibtexOrDoi = false,
-    // orcidEndpoint = "https://pub.orcid.org/v3.0",
-    // delayAfterFetch
-    // replaceAnchorsByDois ==> can be achieved using the customTransform option
   } = {}
 ) {
   const { createNode } = actions;
@@ -89,10 +83,14 @@ export async function sourceNodes(
     for (let i = 0; i < sources.length; i++) {
       if (!silent) {
         console.log(
-          `Retrieving publications from source "${sources[i].name || i}"...`
+          `Adding publications from source "${sources[i].name || i}"...`
         );
       }
-      await manager.add(sources[i]);
+      try {
+        await manager.add(sources[i]);
+      } catch(e) {
+        console.warn(`> Source "${sources[i].name || i} could not be added: ${e.message}`)
+      }
     }
 
     // Remove duplicated publicatioons
